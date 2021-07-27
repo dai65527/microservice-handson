@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package mercari.go_conference_2021_spring_office_hour.db;
+
+option go_package = "github.com/dai65527/microservice-handson/platform/db/proto";
+
+service DBService {
+    rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+    rpc GetCustomer(GetCustomerRequest) returns (GetCustomerResponse);
+    rpc GetCustomerByName(GetCustomerByNameRequest) returns (GetCustomerByNameResponse);
+    rpc CreateItem(CreateItemRequest) returns (CreateItemResponse);
+    rpc GetItem(GetItemRequest) returns (GetItemResponse);
+    rpc ListItems(ListItemsRequest) returns (ListItemsResponse);
+}
+
+message CreateCustomerRequest {
+    string name = 1;
+}
+
+message CreateCustomerResponse {
+    Customer customer = 1;
+}
+
+message GetCustomerRequest {
+    string id = 1;
+}
+  
+message GetCustomerResponse {
+    Customer customer = 1;
+}
+
+message GetCustomerByNameRequest {
+    string name = 1;
+}
+  
+message GetCustomerByNameResponse {
+    Customer customer = 1;
+}
+
+message CreateItemRequest {
+    string customer_id = 1;
+    string title = 2;
+    int64 price = 3;
+}
+  
+message CreateItemResponse {
+    Item item = 1;
+}
+  
+message GetItemRequest {
+    string id = 1;
+}
+  
+message GetItemResponse {
+    Item item = 1;
+}
+  
+message ListItemsRequest {}
+  
+message ListItemsResponse {
+    repeated Item items = 1;
+}
+  
+message Customer {
+    string id = 1;
+    string name = 2;
+}
+  
+message Item {
+    string id = 1;
+    string customer_id = 2;
+    string title = 3;
+    int64 price = 4;
+}
