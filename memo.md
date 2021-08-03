@@ -38,3 +38,17 @@ $ go mod tidy                       # 使用されているパッケージを全
 ```
 $ go get github.com/go-logr/logr@v0.4.0
 ```
+
+## gRPC
+
+### ステータスコード
+予め決まったステータスコードがある。
+https://grpc.github.io/grpc/core/md_doc_statuscodes.html
+
+使う時は、こんな感じでGoのエラーに変換する。
+
+```go
+if errors.Is(err, db.ErrAlreadyExists) {
+    return nil, status.Error(codes.AlreadyExists, "error msg")
+}
+```
