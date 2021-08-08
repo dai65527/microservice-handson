@@ -52,3 +52,39 @@ if errors.Is(err, db.ErrAlreadyExists) {
     return nil, status.Error(codes.AlreadyExists, "error msg")
 }
 ```
+
+## ログ出力
+### loggerパッケージの使い方
+
+```go
+package main
+
+import (
+	"github.com/dai65527/microservice-handson/pkg/logger"
+)
+
+func main() {
+	l, err := logger.New()
+	if err != nil {
+		panic(err)
+	}
+
+	// ログを出力
+	l.Info("Hello, World!")
+    // {"level":"info","timestamp":1628382925315.32,"message":"Hello, World!"}
+
+	// 名前を付けてログを出力
+	clogger := l.WithName("db")
+	clogger.Info("Hello, World!")
+    // {"level":"info","timestamp":1628382925315.366,"logger":"db","message":"Hello, World!"}
+	clogger.WithName("grpc").Info("Hello, World!")
+    // {"level":"info","timestamp":1628382925315.372,"logger":"db.grpc","message":"Hello, World!"}
+
+	// 値を追加してログを出力
+	clogger.WithValues(
+		"key1", "value 1",
+		"key2", "value 2",
+	).Info("grpc request")
+    // {"level":"info","timestamp":1628382925315.416,"logger":"db","message":"grpc request","key1":"value 1","key2":"value 2"}
+}
+```
