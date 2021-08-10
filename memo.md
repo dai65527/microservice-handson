@@ -88,3 +88,26 @@ func main() {
     // {"level":"info","timestamp":1628382925315.416,"logger":"db","message":"grpc request","key1":"value 1","key2":"value 2"}
 }
 ```
+
+## GRPCサーバーをlistenするために書く処理
+
+```go
+lis, err := net.Listen("tcp", ":50051")
+// 略
+s := grpc.NewServer()
+pb.RegisterServiceServer(s, &server{})
+s.Serve(lis)
+```
+
+`server`はgrpcのインターフェイスが実装された構造体。
+
+## reflection.Registerは何をしているか
+> gRPC を使う上でリフレクションを有効にすると、gRPCurl や Evans といったツールを使う際に Protocol Buffers などの IDL を直接的に読み込まずにメソッドを呼び出すことができてとても便利。
+https://syfm.hatenablog.com/entry/2020/06/23/235952
+→サーバが持つメソッドなどを参照できるようにする機能？
+
+https://github.com/grpc/grpc-go/blob/master/Documentation/server-reflection-tutorial.md
+
+## Channelzとは？
+> gRPCによる通信の場合は、Channelzという通信状況をデバッグできるツールが用意されています。
+https://zenn.dev/imamura_sh/articles/channelz-introduction
