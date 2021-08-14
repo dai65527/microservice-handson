@@ -7,6 +7,7 @@ import (
 	"os/signal"
 
 	"github.com/dai65527/microservice-handson/pkg/logger"
+	"github.com/dai65527/microservice-handson/platform/db/grpc"
 	"golang.org/x/sys/unix"
 )
 
@@ -28,12 +29,10 @@ func run(ctx context.Context) int {
 		return 1
 	}
 	clogger := l.WithName("db")
-	clogger.Error(fmt.Errorf("error"), "error happend")
 
 	errCh := make(chan error, 1)
 	go func() {
-		// TODO: 次回実装する
-		// errCh <- grpc.RunServer(ctx, 5000, clogger.WithName("grpc"))
+		errCh <- grpc.RunServer(ctx, 5000, clogger.WithName("grpc"))
 	}()
 
 	select {
