@@ -111,3 +111,31 @@ https://github.com/grpc/grpc-go/blob/master/Documentation/server-reflection-tuto
 ## Channelzとは？
 > gRPCによる通信の場合は、Channelzという通信状況をデバッグできるツールが用意されています。
 https://zenn.dev/imamura_sh/articles/channelz-introduction
+
+## grpcurlで動作確認
+- リストアップ
+```
+$ grpcurl -plaintext localhost:5000 list dnakano.microservice_handson.db.DBServicegrpc.channelz.v1.Channelz
+grpc.reflection.v1alpha.ServerReflection
+```
+
+- メソッド一覧
+```
+$ grpcurl -plaintext localhost:5000 list grpc.reflection.v1alpha.ServerReflection
+grpc.reflection.v1alpha.ServerReflection.ServerReflectionInfo
+```
+
+- メソッド叩いてみる
+```
+$ grpcurl -plaintext -d '{"name": "bunjiro"}' localhost:5000  dnakano.microservice_handson.db.DBService/CreateCustomer
+{
+  "customer": {
+    "id": "e37e21c6-ffab-4424-b126-4464b5a6ec6e",
+    "name": "bunjiro"
+  }
+}
+$ grpcurl -plaintext -d '{"name": "bunjiro"}' localhost:5000  dnakano.microservice_handson.db.DBService/CreateCustomer
+ERROR:
+  Code: AlreadyExists
+  Message: already exists
+```
