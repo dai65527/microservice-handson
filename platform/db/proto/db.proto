@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package mercari.go_conference_2021_spring_office_hour.db;
+package dnakano.microservice_handson.db;
 
 option go_package = "github.com/dai65527/microservice-handson/platform/db/proto";
 
