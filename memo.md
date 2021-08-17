@@ -101,6 +101,18 @@ s.Serve(lis)
 
 `server`はgrpcのインターフェイスが実装された構造体。
 
+## Clientの作成
+こんな感じ。下はテストヘルパーの例。
+
+```go
+func newClient(t *testing.T, port int) proto.DBServiceClient {
+	target := fmt.Sprintf("localhost: %d", port)
+	conn, err := grpc.Dial(target, grpc.WithInsecure())
+	require.NoError(t, err)
+	return proto.NewDBServiceClient(conn)
+}
+```
+
 ## reflection.Registerは何をしているか
 > gRPC を使う上でリフレクションを有効にすると、gRPCurl や Evans といったツールを使う際に Protocol Buffers などの IDL を直接的に読み込まずにメソッドを呼び出すことができてとても便利。
 https://syfm.hatenablog.com/entry/2020/06/23/235952
