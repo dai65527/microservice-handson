@@ -26,8 +26,9 @@ func TestDB(t *testing.T) {
 	// クライアントの作成
 	cli := newClient(t, port)
 
+	// test create customer
 	createCustomerRequest := proto.CreateCustomerRequest{
-		Name: "Nop",
+		Name: "Bunjiro",
 	}
 	createCustomerResponse, err := cli.CreateCustomer(ctx, &createCustomerRequest)
 	st, ok := status.FromError(err)
@@ -38,18 +39,23 @@ func TestDB(t *testing.T) {
 	assert.NotEmpty(t, createCustomerResponse.Customer.Id)
 	assert.Equal(t, "Bunjiro", createCustomerResponse.Customer.Name)
 
-	// createItemRequest := proto.CreateItemRequest{
-	// 	Title: "bunjiro marugari",
-	// 	Price: 1000,
-	// }
+	bunjiro := *createCustomerResponse.Customer
 
-	// createItemResponce, err := cli.CreateItem(ctx, &createItemRequest)
-	// require.NoError(t, err)
-	// require.NotEmpty(t, createItemRequest.)
+	createItemRequest := proto.CreateItemRequest{
+		CustomerId: bunjiro.Id,
+		Title:      "bunjiro marugari",
+		Price:      1000,
+	}
 
-	// listItemRes, err := cli.ListItems(ctx, &proto.ListItemsRequest{})
-	// require.NoError(t, err)
-	// t.Log(listItemRes)
+	createItemResponse, err := cli.CreateItem(ctx, &createItemRequest)
+	require.Nil(t, st)
+	require.True(t, ok)
+	require.NoError(t, err)
+	assert.NotNil(t, createItemResponse.Item)
+	assert.NotNil(t, createItemResponse.Item.Id)
+	assert.Equal(t, bunjiro.Id, createItemResponse.Item.CustomerId)
+	assert.Equal(t, "bunjiro marugari", createItemResponse.Item.Title)
+	assert.Equal(t, int64(1000), createItemResponse.Item.Price)
 }
 
 func startServer(t *testing.T, ctx context.Context, port int) {
