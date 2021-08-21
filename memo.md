@@ -151,3 +151,21 @@ ERROR:
   Code: AlreadyExists
   Message: already exists
 ```
+
+## FormError
+
+```go
+func (s *server) GetItem(ctx context.Context, req *proto.GetItemRequest) (*proto.GetItemResponse, error) {
+	res, err := s.dbClient.GetItem(ctx, &db.GetItemRequest{Id: req.Id})
+	if err != nil {
+		// st != nil かつ ok == true の場合？
+		st, ok := status.FromError(err)
+		if ok && st.Code() == codes.NotFound {
+			return nil, status.Error(codes.NotFound, "not found")
+		}
+
+		return nil, status.Error(codes.Internal, "internal error")
+	}
+	[...]
+}
+```
