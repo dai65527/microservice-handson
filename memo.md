@@ -127,7 +127,8 @@ https://zenn.dev/imamura_sh/articles/channelz-introduction
 ## grpcurlで動作確認
 - リストアップ
 ```
-$ grpcurl -plaintext localhost:5000 list dnakano.microservice_handson.db.DBServicegrpc.channelz.v1.Channelz
+$ grpcurl -plaintext localhost:5000 list
+dnakano.microservice_handson.db.DBServicegrpc.channelz.v1.Channelz
 grpc.reflection.v1alpha.ServerReflection
 ```
 
@@ -168,4 +169,24 @@ func (s *server) GetItem(ctx context.Context, req *proto.GetItemRequest) (*proto
 	}
 	[...]
 }
+```
+
+## Clientの生成
+- grpc.WithInsecure(): セキュリティの設定をしない。Note that transport security is required unless WithInsecure is set.
+- grpc.DialContextはデフォルトでは、Non-Blokingで接続する。
+- grpc.WithBlock()でBlockingにする。
+- grpc.WithDefaultCallOptions(grpc.WaitForReady(true)): 接続が確立するのをブロックして待つ。（デフォルトでは、設定されていない）
+- https://github.com/grpc/grpc/blob/master/doc/wait-for-ready.md
+
+```go
+	opts := []grpc.DialOption{
+		grpc.WithInsecure(),
+		grpc.WithBlock(),
+		grpc.WithDefaultCallOptions(grpc.WaitForReady(true)),
+	}
+
+	conn, err := grpc.DialContext(ctx, "db.db.svc.cluster.local:5000", opts...)
+	if err != nil {
+		return fmt.Errorf("failed to dial db server: %w", err)
+	}
 ```

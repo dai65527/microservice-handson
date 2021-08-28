@@ -62,3 +62,25 @@ func (s *server) GetItem(ctx context.Context, req *proto.GetItemRequest) (*proto
 		},
 	}, nil
 }
+
+func (s *server) ListItems(ctx context.Context, req *proto.ListItemsRequest) (*proto.ListItemsResponse, error) {
+	result, err := s.dbClient.ListItems(ctx, &db.ListItemsRequest{})
+	if err != nil {
+		return nil, status.Error(codes.Internal, "internal error")
+	}
+
+	res := &proto.ListItemsResponse{
+		Items: make([]*proto.Item, len(result.Items)),
+	}
+
+	for i, item := range result.Items {
+		res.Items[i] = &proto.Item{
+			Id:         item.Id,
+			CustomerId: item.CustomerId,
+			Title:      item.Title,
+			Price:      item.Price,
+		}
+	}
+
+	return res, nil
+}

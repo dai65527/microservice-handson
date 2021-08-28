@@ -31,7 +31,8 @@ func run(ctx context.Context) int {
 
 	errCh := make(chan error, 1)
 	go func() {
-		errCh <- grpc.RunServer(ctx, 5000, clogger.WithName("grpc"))
+		// errCh <- grpc.RunServer(ctx, 5000, clogger.WithName("grpc"))
+		errCh <- grpc.RunServer(ctx, 5001, clogger.WithName("grpc"))
 	}()
 
 	select {
