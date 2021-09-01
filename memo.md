@@ -190,3 +190,12 @@ func (s *server) GetItem(ctx context.Context, req *proto.GetItemRequest) (*proto
 		return fmt.Errorf("failed to dial db server: %w", err)
 	}
 ```
+
+## Docker Imageの作成
+### Dockerfile
+- `COPY go.mod`、`go mod download`してから、`COPY . .`する理由。
+	- ソース書き換え時に改めて`go mod download`しないようにするため。
+	- キャッシュを使ってbuild時間短縮。
+- `gcr.io/distroless/base`
+	- runtime用の軽量コンテナ
+	- alpineよりよい？（https://blog.unasuke.com/2021/practical-distroless/）
