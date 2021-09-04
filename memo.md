@@ -25,6 +25,31 @@ option go_package = "github.com/dai65527/microservice-handson/services/item/prot
 
 としていた場合に、`github.com/dai65527/microservice-handson/services/item/proto`というディレクトリに出力されてしまう。なので、`--go_opt=module=github.com/dai65527/microservice-handson`としておく。
 
+## bufによるprotocのコンパイル
+buf.gen.yamlを用意する。
+```yaml
+version: v1beta1
+
+plugins:
+  - name: go
+    # path: ./bin/protoc-gen-go # binaryがGOPATHにない場合は指定する
+    out: .
+    opt: paths=source_relative
+  - name: go-grpc
+    # path: ./bin/protoc-gen-go-grpc
+    out: .
+    opt: paths=source_relative
+  # - name: grpc-gateway
+  #   path: ./bin/protoc-gen-grpc-gateway # binaryがGOPATHにない場合は指定する
+  #   out: .
+  #   opt: paths=source_relative
+```
+
+プロジェクトのルートディレクトリで、
+```
+$ buf generate
+```
+
 ## go modと必要なpackageの追加
 
 ```sh

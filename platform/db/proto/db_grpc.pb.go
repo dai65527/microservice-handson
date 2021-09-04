@@ -277,5 +277,5 @@ var DBService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "db.proto",
+	Metadata: "platform/db/proto/db.proto",
 }
