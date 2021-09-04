@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package dnakano.microservice_handson.customer;
+
+option go_package = "github.com/dai65527/microservice-handson/platform/db/proto";
+
+service CustomerService {
+    rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+    rpc GetCustomer(GetCustomerRequest) returns (GetCustomerResponse);
+    rpc GetCustomerByName(GetCustomerByNameRequest) returns (GetCustomerByNameResponse);
+}
+
+message CreateCustomerRequest {
+  string name = 1;
+}
+
+message CreateCustomerResponse {
+  Customer customer = 1;
+}
+
+message GetCustomerRequest {
+  string id = 1;
+}
+
+message GetCustomerResponse {
+  Customer customer = 1;
+}
+
+message GetCustomerByNameRequest {
+  string name = 1;
+}
+
+message GetCustomerByNameResponse {
+  Customer customer = 1;
+}
+
+message Customer {
+  string id = 1;
+  string name = 2;
+}
