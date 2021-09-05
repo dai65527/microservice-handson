@@ -7,9 +7,10 @@ import (
 	"os/signal"
 	"strconv"
 
-	"github.com/dai65527/microservice-handson/pkg/logger"
-	"github.com/dai65527/microservice-handson/services/item/grpc"
 	"golang.org/x/sys/unix"
+
+	"github.com/dai65527/microservice-handson/pkg/logger"
+	"github.com/dai65527/microservice-handson/services/customer/grpc"
 )
 
 func main() {
@@ -24,11 +25,12 @@ func run(ctx context.Context) int {
 	if err != nil {
 		_, ferr := fmt.Fprintf(os.Stderr, "failed to create logger: %s", err)
 		if ferr != nil {
+			// Unhandleable, something went wrong...
 			panic(fmt.Sprintf("failed to write log:`%s` original error is:`%s`", ferr, err))
 		}
 		return 1
 	}
-	clogger := l.WithName("item")
+	clogger := l.WithName("customer")
 
 	port, err := strconv.Atoi(os.Getenv("LISTEN_PORT"))
 	if err != nil {
@@ -36,7 +38,6 @@ func run(ctx context.Context) int {
 	}
 	errCh := make(chan error, 1)
 	go func() {
-		// errCh <- grpc.RunServer(ctx, 5000, clogger.WithName("grpc"))
 		errCh <- grpc.RunServer(ctx, port, clogger.WithName("grpc"))
 	}()
 

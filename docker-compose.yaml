@@ -10,8 +10,20 @@ services:
     environment: 
       DB_HOST: handson-db-service
       DB_PORT: 5000
+      LISTEN_PORT: 5001
     build:
       context: .
       dockerfile: ./services/item/Dockerfile
     ports:
       - "5001:5001"
+  customer:
+    container_name: handson-customer-service
+    environment: 
+      DB_HOST: handson-db-service
+      DB_PORT: 5000
+      LISTEN_PORT: 5002
+    build:
+      context: .
+      dockerfile: ./services/customer/Dockerfile
+    ports:
+      - "5002:5002"
