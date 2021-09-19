@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package dnakano.microservice_handson.authority;
+
+option go_package = "github.com/dai65527/microservice-handson/platform/authority/proto";
+
+import "services/customer/proto/customer.proto";
+
+service AuthorityService {
+  rpc Signup(SignupRequest) returns (SignupResponse);
+  rpc Signin(SigninRequest) returns (SigninResponse);
+  rpc ListPublicKeys(ListPublicKeysRequest) returns (ListPublicKeysResponse);
+}
+
+message SignupRequest {
+  string name = 1;
+}
+
+message SignupResponse {
+  customer.Customer customer = 1;
+}
+
+message SigninRequest {
+  string name = 1;
+}
+
+message SigninResponse {
+  string access_token = 1;
+}
+
+message ListPublicKeysRequest {}
+
+message ListPublicKeysResponse {
+  string jwks = 1;
+}

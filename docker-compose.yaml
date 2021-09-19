@@ -1,5 +1,9 @@
 version: "3"
 services:
+  # debug:
+  #   container_name: handson-debug
+  #   image: debian:buster
+  #   command: ["tail", "-f", "/dev/null"]
   db:
     container_name: handson-db-service
     build: 
@@ -27,3 +31,14 @@ services:
       dockerfile: ./services/customer/Dockerfile
     ports:
       - "5002:5002"
+  authority:
+    container_name: handson-authority-service
+    environment: 
+      CUSTOMER_HOST: handson-customer-service
+      CUSTOMER_PORT: 5002
+      LISTEN_PORT: 5003
+    build:
+      context: .
+      dockerfile: ./services/authority/Dockerfile
+    ports:
+      - "5003:5003"

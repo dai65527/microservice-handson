@@ -224,3 +224,7 @@ func (s *server) GetItem(ctx context.Context, req *proto.GetItemRequest) (*proto
 - `gcr.io/distroless/base`
 	- runtime用の軽量コンテナ
 	- alpineよりよい？（https://blog.unasuke.com/2021/practical-distroless/）
+
+## Authについて
+### JWT/JWS/JWK
+- 分かりやすい：https://techinfoofmicrosofttech.osscons.jp/index.php?JWS
