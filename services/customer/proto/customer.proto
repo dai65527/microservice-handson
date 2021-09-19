@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package dnakano.microservice_handson.customer;
 
-option go_package = "github.com/dai65527/microservice-handson/platform/db/proto";
+option go_package = "github.com/dai65527/microservice-handson/services/customer/proto";
 
 service CustomerService {
     rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
