@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package dnakano.microservice_handson.catalog;
+
+option go_package = "github.com/dai65527/microservice-handson/services/catalog/proto";
+
+service CatalogService {
+  rpc CreateItem(CreateItemRequest) returns (CreateItemResponse);
+  rpc GetItem(GetItemRequest) returns (GetItemResponse);
+  rpc ListItems(ListItemsRequest) returns (ListItemsResponse);
+}
+
+message CreateItemRequest {
+  string title = 1;
+  int64 price = 2;
+}
+
+message CreateItemResponse {
+  Item item = 1;
+}
+
+message GetItemRequest {
+  string id = 1;
+}
+
+message GetItemResponse {
+  Item item = 1;
+}
+
+message ListItemsRequest {
+  string id = 1;
+}
+
+message ListItemsResponse {
+  repeated Item items = 1;
+}
+
+message Item {
+  string id = 1;
+  string customer_id = 2;
+  string customer_name = 3;
+  string title = 4;
+  int64 price = 5;
+}
