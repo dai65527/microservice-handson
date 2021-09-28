@@ -42,3 +42,16 @@ services:
       dockerfile: ./services/authority/Dockerfile
     ports:
       - "5003:5003"
+  catalog:
+    container_name: handson-catalog-service
+    environment: 
+      CUSTOMER_HOST: handson-customer-service
+      CUSTOMER_PORT: 5002
+      ITEM_HOST: handson-item-service
+      ITEM_PORT: 5003
+      LISTEN_PORT: 5004
+    build:
+      context: .
+      dockerfile: ./services/catalog/Dockerfile
+    ports:
+      - "5004:5004"
