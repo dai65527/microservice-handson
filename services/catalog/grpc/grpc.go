@@ -26,7 +26,7 @@ func RunServer(ctx context.Context, port int, logger logr.Logger) error {
 	}
 	itemPort := os.Getenv("ITEM_PORT")
 	if itemPort == "" {
-		itemPort = "5003"
+		itemPort = "5001"
 	}
 	// item connection
 	iconn, err := grpc.DialContext(ctx, fmt.Sprintf("%s:%s", itemHost, itemPort), opts...)

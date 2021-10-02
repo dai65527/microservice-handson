@@ -23,7 +23,7 @@ type server struct {
 func (s *server) CreateItem(ctx context.Context, req *proto.CreateItemRequest) (*proto.CreateItemResponse, error) {
 	tokenStr, err := auth.AuthFromMD(ctx, "bearer")
 	if err != nil {
-		return nil, status.Error(codes.InvalidArgument, "failed to parse access token")
+		return nil, err
 	}
 
 	token, err := jwt.Parse([]byte(tokenStr))

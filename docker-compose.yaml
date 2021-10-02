@@ -48,7 +48,7 @@ services:
       CUSTOMER_HOST: handson-customer-service
       CUSTOMER_PORT: 5002
       ITEM_HOST: handson-item-service
-      ITEM_PORT: 5003
+      ITEM_PORT: 5001
       LISTEN_PORT: 5004
     build:
       context: .

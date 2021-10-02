@@ -8,7 +8,7 @@ import (
 	"strconv"
 
 	"github.com/dai65527/microservice-handson/pkg/logger"
-	"github.com/dai65527/microservice-handson/platform/db/grpc"
+	"github.com/dai65527/microservice-handson/services/catalog/grpc"
 	"golang.org/x/sys/unix"
 )
 
