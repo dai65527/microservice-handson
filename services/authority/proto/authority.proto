@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package dnakano.microservice_handson.authority;
 
-option go_package = "github.com/dai65527/microservice-handson/platform/authority/proto";
+option go_package = "github.com/dai65527/microservice-handson/services/authority/proto";
 
 import "services/customer/proto/customer.proto";
 

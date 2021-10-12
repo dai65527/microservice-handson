@@ -13,7 +13,7 @@ import (
 	"io"
 	"net/http"
 
-	proto_1 "github.com/dai65527/microservice-handson/platform/authority/proto"
+	proto_1 "github.com/dai65527/microservice-handson/services/authority/proto"
 	proto_2 "github.com/dai65527/microservice-handson/services/catalog/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"

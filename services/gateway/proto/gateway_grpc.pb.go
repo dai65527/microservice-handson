@@ -4,7 +4,7 @@ package proto
 
 import (
 	context "context"
-	proto "github.com/dai65527/microservice-handson/platform/authority/proto"
+	proto "github.com/dai65527/microservice-handson/services/authority/proto"
 	proto1 "github.com/dai65527/microservice-handson/services/catalog/proto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
