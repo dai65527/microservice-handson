@@ -25,6 +25,34 @@ option go_package = "github.com/dai65527/microservice-handson/services/item/prot
 
 としていた場合に、`github.com/dai65527/microservice-handson/services/item/proto`というディレクトリに出力されてしまう。なので、`--go_opt=module=github.com/dai65527/microservice-handson`としておく。
 
+## .protocファイル
+`service/gateway/proto`からコード生成する例
+
+普通にコード生成。-Iはインポートパス。
+```
+$ protoc -I. \                      
+  -I./services/catalog/proto \           
+  -I$GOPATH/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.16.0/third_party/googleapis \
+  --proto_path=services/gateway/proto \               
+  --go_out . \                   
+  --go_opt module=github.com/dai65527/microservice-handson  \
+  --go-grpc_out . \
+  --go-grpc_opt module=github.com/dai65527/microservice-handson \
+  services/gateway/proto/*.proto
+```
+
+getewayのコード（`services/gateway/proto/gateway.pb.gw.go`）の生成
+```
+$ protoc -I.
+    --grpc-gateway_out . \
+    -I./services/catalog/proto \
+    -I$GOPATH/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.16.0/third_party/googleapis \
+    --grpc-gateway_opt logtostderr=true \
+    --grpc-gateway_opt paths=source_relative \
+    --grpc-gateway_opt generate_unbound_methods=true \       
+    services/gateway/proto/*.proto
+```
+
 ## bufによるprotocのコンパイル
 buf.gen.yamlを用意する。
 ```yaml
