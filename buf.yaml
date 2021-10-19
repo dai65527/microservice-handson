@@ -1,0 +1,4 @@
+version: v1beta1
+name: buf.build/dnakano/microservice-handson
+deps:
+  - buf.build/beta/googleapis

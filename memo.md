@@ -54,7 +54,8 @@ $ protoc -I.
 ```
 
 ## bufによるprotocのコンパイル
-buf.gen.yamlを用意する。
+buf.gen.yamlを用意する。使用するプラグインとオプションなどを書く。
+(spec：https://docs.buf.build/configuration/v1/buf-gen-yaml)
 ```yaml
 version: v1beta1
 
@@ -67,13 +68,29 @@ plugins:
     # path: ./bin/protoc-gen-go-grpc
     out: .
     opt: paths=source_relative
-  # - name: grpc-gateway
+  - name: grpc-gateway
   #   path: ./bin/protoc-gen-grpc-gateway # binaryがGOPATHにない場合は指定する
-  #   out: .
-  #   opt: paths=source_relative
+    out: .
+    opt: paths=source_relative
 ```
 
-プロジェクトのルートディレクトリで、
+buf.yamlを用意する。依存するパッケージなどを書く。
+`buf.build/beta/googleapis`の実態はhttps://buf.build/beta/googleapisにある。(gRPC Gatewayの設定を書くのに必要)
+(spec: https://docs.buf.build/configuration/v1/buf-yaml)
+```yaml
+version: v1beta1
+name: buf.build/dnakano/microservice-handson
+deps:
+  - buf.build/beta/googleapis
+```
+
+プロジェクトのルートディレクトリで、以下を実行。
+依存パッケージをインストール、更新して、buf.lockを生成してくれる。
+```
+$ buf mod update
+```
+
+コード生成。
 ```
 $ buf generate
 ```

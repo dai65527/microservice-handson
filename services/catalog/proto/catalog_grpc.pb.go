@@ -169,5 +169,5 @@ var CatalogService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "services/catalog/proto/catalag.proto",
+	Metadata: "services/catalog/proto/catalog.proto",
 }

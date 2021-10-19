@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.27.1
 // 	protoc        v3.17.3
-// source: services/catalog/proto/catalag.proto
+// source: services/catalog/proto/catalog.proto
 
 package proto
 
@@ -32,7 +32,7 @@ type CreateItemRequest struct {
 func (x *CreateItemRequest) Reset() {
 	*x = CreateItemRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_catalog_proto_catalag_proto_msgTypes[0]
+		mi := &file_services_catalog_proto_catalog_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -45,7 +45,7 @@ func (x *CreateItemRequest) String() string {
 func (*CreateItemRequest) ProtoMessage() {}
 
 func (x *CreateItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_services_catalog_proto_catalag_proto_msgTypes[0]
+	mi := &file_services_catalog_proto_catalog_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *CreateItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateItemRequest.ProtoReflect.Descriptor instead.
 func (*CreateItemRequest) Descriptor() ([]byte, []int) {
-	return file_services_catalog_proto_catalag_proto_rawDescGZIP(), []int{0}
+	return file_services_catalog_proto_catalog_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateItemRequest) GetTitle() string {
@@ -86,7 +86,7 @@ type CreateItemResponse struct {
 func (x *CreateItemResponse) Reset() {
 	*x = CreateItemResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_catalog_proto_catalag_proto_msgTypes[1]
+		mi := &file_services_catalog_proto_catalog_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -99,7 +99,7 @@ func (x *CreateItemResponse) String() string {
 func (*CreateItemResponse) ProtoMessage() {}
 
 func (x *CreateItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_services_catalog_proto_catalag_proto_msgTypes[1]
+	mi := &file_services_catalog_proto_catalog_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -112,7 +112,7 @@ func (x *CreateItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateItemResponse.ProtoReflect.Descriptor instead.
 func (*CreateItemResponse) Descriptor() ([]byte, []int) {
-	return file_services_catalog_proto_catalag_proto_rawDescGZIP(), []int{1}
+	return file_services_catalog_proto_catalog_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateItemResponse) GetItem() *Item {
@@ -133,7 +133,7 @@ type GetItemRequest struct {
 func (x *GetItemRequest) Reset() {
 	*x = GetItemRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_catalog_proto_catalag_proto_msgTypes[2]
+		mi := &file_services_catalog_proto_catalog_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -146,7 +146,7 @@ func (x *GetItemRequest) String() string {
 func (*GetItemRequest) ProtoMessage() {}
 
 func (x *GetItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_services_catalog_proto_catalag_proto_msgTypes[2]
+	mi := &file_services_catalog_proto_catalog_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +159,7 @@ func (x *GetItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetItemRequest.ProtoReflect.Descriptor instead.
 func (*GetItemRequest) Descriptor() ([]byte, []int) {
-	return file_services_catalog_proto_catalag_proto_rawDescGZIP(), []int{2}
+	return file_services_catalog_proto_catalog_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetItemRequest) GetId() string {
@@ -180,7 +180,7 @@ type GetItemResponse struct {
 func (x *GetItemResponse) Reset() {
 	*x = GetItemResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_catalog_proto_catalag_proto_msgTypes[3]
+		mi := &file_services_catalog_proto_catalog_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -193,7 +193,7 @@ func (x *GetItemResponse) String() string {
 func (*GetItemResponse) ProtoMessage() {}
 
 func (x *GetItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_services_catalog_proto_catalag_proto_msgTypes[3]
+	mi := &file_services_catalog_proto_catalog_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -206,7 +206,7 @@ func (x *GetItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetItemResponse.ProtoReflect.Descriptor instead.
 func (*GetItemResponse) Descriptor() ([]byte, []int) {
-	return file_services_catalog_proto_catalag_proto_rawDescGZIP(), []int{3}
+	return file_services_catalog_proto_catalog_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetItemResponse) GetItem() *Item {
@@ -227,7 +227,7 @@ type ListItemsRequest struct {
 func (x *ListItemsRequest) Reset() {
 	*x = ListItemsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_catalog_proto_catalag_proto_msgTypes[4]
+		mi := &file_services_catalog_proto_catalog_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -240,7 +240,7 @@ func (x *ListItemsRequest) String() string {
 func (*ListItemsRequest) ProtoMessage() {}
 
 func (x *ListItemsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_services_catalog_proto_catalag_proto_msgTypes[4]
+	mi := &file_services_catalog_proto_catalog_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -253,7 +253,7 @@ func (x *ListItemsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListItemsRequest.ProtoReflect.Descriptor instead.
 func (*ListItemsRequest) Descriptor() ([]byte, []int) {
-	return file_services_catalog_proto_catalag_proto_rawDescGZIP(), []int{4}
+	return file_services_catalog_proto_catalog_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListItemsRequest) GetId() string {
@@ -274,7 +274,7 @@ type ListItemsResponse struct {
 func (x *ListItemsResponse) Reset() {
 	*x = ListItemsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_catalog_proto_catalag_proto_msgTypes[5]
+		mi := &file_services_catalog_proto_catalog_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -287,7 +287,7 @@ func (x *ListItemsResponse) String() string {
 func (*ListItemsResponse) ProtoMessage() {}
 
 func (x *ListItemsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_services_catalog_proto_catalag_proto_msgTypes[5]
+	mi := &file_services_catalog_proto_catalog_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -300,7 +300,7 @@ func (x *ListItemsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListItemsResponse.ProtoReflect.Descriptor instead.
 func (*ListItemsResponse) Descriptor() ([]byte, []int) {
-	return file_services_catalog_proto_catalag_proto_rawDescGZIP(), []int{5}
+	return file_services_catalog_proto_catalog_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListItemsResponse) GetItems() []*Item {
@@ -325,7 +325,7 @@ type Item struct {
 func (x *Item) Reset() {
 	*x = Item{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_catalog_proto_catalag_proto_msgTypes[6]
+		mi := &file_services_catalog_proto_catalog_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -338,7 +338,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_services_catalog_proto_catalag_proto_msgTypes[6]
+	mi := &file_services_catalog_proto_catalog_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -351,7 +351,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_services_catalog_proto_catalag_proto_rawDescGZIP(), []int{6}
+	return file_services_catalog_proto_catalog_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Item) GetId() string {
@@ -389,11 +389,11 @@ func (x *Item) GetPrice() int64 {
 	return 0
 }
 
-var File_services_catalog_proto_catalag_proto protoreflect.FileDescriptor
+var File_services_catalog_proto_catalog_proto protoreflect.FileDescriptor
 
-var file_services_catalog_proto_catalag_proto_rawDesc = []byte{
+var file_services_catalog_proto_catalog_proto_rawDesc = []byte{
 	0x0a, 0x24, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x61, 0x74, 0x61, 0x6c,
-	0x6f, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x61, 0x74, 0x61, 0x6c, 0x61, 0x67,
+	0x6f, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x61, 0x74, 0x61, 0x6c, 0x6f, 0x67,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x24, 0x64, 0x6e, 0x61, 0x6b, 0x61, 0x6e, 0x6f, 0x2e,
 	0x6d, 0x69, 0x63, 0x72, 0x6f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x68, 0x61, 0x6e,
 	0x64, 0x73, 0x6f, 0x6e, 0x2e, 0x63, 0x61, 0x74, 0x61, 0x6c, 0x6f, 0x67, 0x22, 0x3f, 0x0a, 0x11,
@@ -463,19 +463,19 @@ var file_services_catalog_proto_catalag_proto_rawDesc = []byte{
 }
 
 var (
-	file_services_catalog_proto_catalag_proto_rawDescOnce sync.Once
-	file_services_catalog_proto_catalag_proto_rawDescData = file_services_catalog_proto_catalag_proto_rawDesc
+	file_services_catalog_proto_catalog_proto_rawDescOnce sync.Once
+	file_services_catalog_proto_catalog_proto_rawDescData = file_services_catalog_proto_catalog_proto_rawDesc
 )
 
-func file_services_catalog_proto_catalag_proto_rawDescGZIP() []byte {
-	file_services_catalog_proto_catalag_proto_rawDescOnce.Do(func() {
-		file_services_catalog_proto_catalag_proto_rawDescData = protoimpl.X.CompressGZIP(file_services_catalog_proto_catalag_proto_rawDescData)
+func file_services_catalog_proto_catalog_proto_rawDescGZIP() []byte {
+	file_services_catalog_proto_catalog_proto_rawDescOnce.Do(func() {
+		file_services_catalog_proto_catalog_proto_rawDescData = protoimpl.X.CompressGZIP(file_services_catalog_proto_catalog_proto_rawDescData)
 	})
-	return file_services_catalog_proto_catalag_proto_rawDescData
+	return file_services_catalog_proto_catalog_proto_rawDescData
 }
 
-var file_services_catalog_proto_catalag_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
-var file_services_catalog_proto_catalag_proto_goTypes = []interface{}{
+var file_services_catalog_proto_catalog_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_services_catalog_proto_catalog_proto_goTypes = []interface{}{
 	(*CreateItemRequest)(nil),  // 0: dnakano.microservice_handson.catalog.CreateItemRequest
 	(*CreateItemResponse)(nil), // 1: dnakano.microservice_handson.catalog.CreateItemResponse
 	(*GetItemRequest)(nil),     // 2: dnakano.microservice_handson.catalog.GetItemRequest
@@ -484,7 +484,7 @@ var file_services_catalog_proto_catalag_proto_goTypes = []interface{}{
 	(*ListItemsResponse)(nil),  // 5: dnakano.microservice_handson.catalog.ListItemsResponse
 	(*Item)(nil),               // 6: dnakano.microservice_handson.catalog.Item
 }
-var file_services_catalog_proto_catalag_proto_depIdxs = []int32{
+var file_services_catalog_proto_catalog_proto_depIdxs = []int32{
 	6, // 0: dnakano.microservice_handson.catalog.CreateItemResponse.item:type_name -> dnakano.microservice_handson.catalog.Item
 	6, // 1: dnakano.microservice_handson.catalog.GetItemResponse.item:type_name -> dnakano.microservice_handson.catalog.Item
 	6, // 2: dnakano.microservice_handson.catalog.ListItemsResponse.items:type_name -> dnakano.microservice_handson.catalog.Item
@@ -501,13 +501,13 @@ var file_services_catalog_proto_catalag_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_services_catalog_proto_catalag_proto_init() }
-func file_services_catalog_proto_catalag_proto_init() {
-	if File_services_catalog_proto_catalag_proto != nil {
+func init() { file_services_catalog_proto_catalog_proto_init() }
+func file_services_catalog_proto_catalog_proto_init() {
+	if File_services_catalog_proto_catalog_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_services_catalog_proto_catalag_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_services_catalog_proto_catalog_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateItemRequest); i {
 			case 0:
 				return &v.state
@@ -519,7 +519,7 @@ func file_services_catalog_proto_catalag_proto_init() {
 				return nil
 			}
 		}
-		file_services_catalog_proto_catalag_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_services_catalog_proto_catalog_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateItemResponse); i {
 			case 0:
 				return &v.state
@@ -531,7 +531,7 @@ func file_services_catalog_proto_catalag_proto_init() {
 				return nil
 			}
 		}
-		file_services_catalog_proto_catalag_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_services_catalog_proto_catalog_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetItemRequest); i {
 			case 0:
 				return &v.state
@@ -543,7 +543,7 @@ func file_services_catalog_proto_catalag_proto_init() {
 				return nil
 			}
 		}
-		file_services_catalog_proto_catalag_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_services_catalog_proto_catalog_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetItemResponse); i {
 			case 0:
 				return &v.state
@@ -555,7 +555,7 @@ func file_services_catalog_proto_catalag_proto_init() {
 				return nil
 			}
 		}
-		file_services_catalog_proto_catalag_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_services_catalog_proto_catalog_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ListItemsRequest); i {
 			case 0:
 				return &v.state
@@ -567,7 +567,7 @@ func file_services_catalog_proto_catalag_proto_init() {
 				return nil
 			}
 		}
-		file_services_catalog_proto_catalag_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_services_catalog_proto_catalog_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ListItemsResponse); i {
 			case 0:
 				return &v.state
@@ -579,7 +579,7 @@ func file_services_catalog_proto_catalag_proto_init() {
 				return nil
 			}
 		}
-		file_services_catalog_proto_catalag_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_services_catalog_proto_catalog_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Item); i {
 			case 0:
 				return &v.state
@@ -596,18 +596,18 @@ func file_services_catalog_proto_catalag_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_services_catalog_proto_catalag_proto_rawDesc,
+			RawDescriptor: file_services_catalog_proto_catalog_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_services_catalog_proto_catalag_proto_goTypes,
-		DependencyIndexes: file_services_catalog_proto_catalag_proto_depIdxs,
-		MessageInfos:      file_services_catalog_proto_catalag_proto_msgTypes,
+		GoTypes:           file_services_catalog_proto_catalog_proto_goTypes,
+		DependencyIndexes: file_services_catalog_proto_catalog_proto_depIdxs,
+		MessageInfos:      file_services_catalog_proto_catalog_proto_msgTypes,
 	}.Build()
-	File_services_catalog_proto_catalag_proto = out.File
-	file_services_catalog_proto_catalag_proto_rawDesc = nil
-	file_services_catalog_proto_catalag_proto_goTypes = nil
-	file_services_catalog_proto_catalag_proto_depIdxs = nil
+	File_services_catalog_proto_catalog_proto = out.File
+	file_services_catalog_proto_catalog_proto_rawDesc = nil
+	file_services_catalog_proto_catalog_proto_goTypes = nil
+	file_services_catalog_proto_catalog_proto_depIdxs = nil
 }
