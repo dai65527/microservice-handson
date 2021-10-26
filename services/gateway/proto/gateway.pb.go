@@ -241,11 +241,11 @@ var file_services_gateway_proto_gateway_proto_rawDesc = []byte{
 	0x8b, 0x01, 0x0a, 0x06, 0x53, 0x69, 0x67, 0x6e, 0x75, 0x70, 0x12, 0x35, 0x2e, 0x64, 0x6e, 0x61,
 	0x6b, 0x61, 0x6e, 0x6f, 0x2e, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
 	0x65, 0x5f, 0x68, 0x61, 0x6e, 0x64, 0x73, 0x6f, 0x6e, 0x2e, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72,
-	0x69, 0x74, 0x79, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x69, 0x74, 0x79, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x1a, 0x36, 0x2e, 0x64, 0x6e, 0x61, 0x6b, 0x61, 0x6e, 0x6f, 0x2e, 0x6d, 0x69, 0x63, 0x72,
 	0x6f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x68, 0x61, 0x6e, 0x64, 0x73, 0x6f, 0x6e,
-	0x2e, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x69,
-	0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x12, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x2e, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x75,
+	0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x12, 0x82, 0xd3, 0xe4, 0x93, 0x02,
 	0x0c, 0x22, 0x07, 0x2f, 0x73, 0x69, 0x67, 0x6e, 0x75, 0x70, 0x3a, 0x01, 0x2a, 0x12, 0x90, 0x01,
 	0x0a, 0x06, 0x53, 0x69, 0x67, 0x6e, 0x69, 0x6e, 0x12, 0x35, 0x2e, 0x64, 0x6e, 0x61, 0x6b, 0x61,
 	0x6e, 0x6f, 0x2e, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f,
@@ -310,26 +310,28 @@ var file_services_gateway_proto_gateway_proto_goTypes = []interface{}{
 	(*SigninResponse)(nil),            // 1: dnakano.microservice_handson.gateway.SigninResponse
 	(*GetItemRequest)(nil),            // 2: dnakano.microservice_handson.gateway.GetItemRequest
 	(*GetItemResponse)(nil),           // 3: dnakano.microservice_handson.gateway.GetItemResponse
-	(*proto.SigninRequest)(nil),       // 4: dnakano.microservice_handson.authority.SigninRequest
-	(*proto1.CreateItemRequest)(nil),  // 5: dnakano.microservice_handson.catalog.CreateItemRequest
-	(*proto1.GetItemRequest)(nil),     // 6: dnakano.microservice_handson.catalog.GetItemRequest
-	(*proto1.ListItemsRequest)(nil),   // 7: dnakano.microservice_handson.catalog.ListItemsRequest
-	(*proto.SigninResponse)(nil),      // 8: dnakano.microservice_handson.authority.SigninResponse
-	(*proto1.CreateItemResponse)(nil), // 9: dnakano.microservice_handson.catalog.CreateItemResponse
-	(*proto1.GetItemResponse)(nil),    // 10: dnakano.microservice_handson.catalog.GetItemResponse
-	(*proto1.ListItemsResponse)(nil),  // 11: dnakano.microservice_handson.catalog.ListItemsResponse
+	(*proto.SignupRequest)(nil),       // 4: dnakano.microservice_handson.authority.SignupRequest
+	(*proto.SigninRequest)(nil),       // 5: dnakano.microservice_handson.authority.SigninRequest
+	(*proto1.CreateItemRequest)(nil),  // 6: dnakano.microservice_handson.catalog.CreateItemRequest
+	(*proto1.GetItemRequest)(nil),     // 7: dnakano.microservice_handson.catalog.GetItemRequest
+	(*proto1.ListItemsRequest)(nil),   // 8: dnakano.microservice_handson.catalog.ListItemsRequest
+	(*proto.SignupResponse)(nil),      // 9: dnakano.microservice_handson.authority.SignupResponse
+	(*proto.SigninResponse)(nil),      // 10: dnakano.microservice_handson.authority.SigninResponse
+	(*proto1.CreateItemResponse)(nil), // 11: dnakano.microservice_handson.catalog.CreateItemResponse
+	(*proto1.GetItemResponse)(nil),    // 12: dnakano.microservice_handson.catalog.GetItemResponse
+	(*proto1.ListItemsResponse)(nil),  // 13: dnakano.microservice_handson.catalog.ListItemsResponse
 }
 var file_services_gateway_proto_gateway_proto_depIdxs = []int32{
-	4,  // 0: dnakano.microservice_handson.gateway.GatewayService.Signup:input_type -> dnakano.microservice_handson.authority.SigninRequest
-	4,  // 1: dnakano.microservice_handson.gateway.GatewayService.Signin:input_type -> dnakano.microservice_handson.authority.SigninRequest
-	5,  // 2: dnakano.microservice_handson.gateway.GatewayService.CreateItem:input_type -> dnakano.microservice_handson.catalog.CreateItemRequest
-	6,  // 3: dnakano.microservice_handson.gateway.GatewayService.GetItem:input_type -> dnakano.microservice_handson.catalog.GetItemRequest
-	7,  // 4: dnakano.microservice_handson.gateway.GatewayService.ListItems:input_type -> dnakano.microservice_handson.catalog.ListItemsRequest
-	8,  // 5: dnakano.microservice_handson.gateway.GatewayService.Signup:output_type -> dnakano.microservice_handson.authority.SigninResponse
-	8,  // 6: dnakano.microservice_handson.gateway.GatewayService.Signin:output_type -> dnakano.microservice_handson.authority.SigninResponse
-	9,  // 7: dnakano.microservice_handson.gateway.GatewayService.CreateItem:output_type -> dnakano.microservice_handson.catalog.CreateItemResponse
-	10, // 8: dnakano.microservice_handson.gateway.GatewayService.GetItem:output_type -> dnakano.microservice_handson.catalog.GetItemResponse
-	11, // 9: dnakano.microservice_handson.gateway.GatewayService.ListItems:output_type -> dnakano.microservice_handson.catalog.ListItemsResponse
+	4,  // 0: dnakano.microservice_handson.gateway.GatewayService.Signup:input_type -> dnakano.microservice_handson.authority.SignupRequest
+	5,  // 1: dnakano.microservice_handson.gateway.GatewayService.Signin:input_type -> dnakano.microservice_handson.authority.SigninRequest
+	6,  // 2: dnakano.microservice_handson.gateway.GatewayService.CreateItem:input_type -> dnakano.microservice_handson.catalog.CreateItemRequest
+	7,  // 3: dnakano.microservice_handson.gateway.GatewayService.GetItem:input_type -> dnakano.microservice_handson.catalog.GetItemRequest
+	8,  // 4: dnakano.microservice_handson.gateway.GatewayService.ListItems:input_type -> dnakano.microservice_handson.catalog.ListItemsRequest
+	9,  // 5: dnakano.microservice_handson.gateway.GatewayService.Signup:output_type -> dnakano.microservice_handson.authority.SignupResponse
+	10, // 6: dnakano.microservice_handson.gateway.GatewayService.Signin:output_type -> dnakano.microservice_handson.authority.SigninResponse
+	11, // 7: dnakano.microservice_handson.gateway.GatewayService.CreateItem:output_type -> dnakano.microservice_handson.catalog.CreateItemResponse
+	12, // 8: dnakano.microservice_handson.gateway.GatewayService.GetItem:output_type -> dnakano.microservice_handson.catalog.GetItemResponse
+	13, // 9: dnakano.microservice_handson.gateway.GatewayService.ListItems:output_type -> dnakano.microservice_handson.catalog.ListItemsResponse
 	5,  // [5:10] is the sub-list for method output_type
 	0,  // [0:5] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name

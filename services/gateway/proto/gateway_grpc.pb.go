@@ -20,7 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GatewayServiceClient interface {
-	Signup(ctx context.Context, in *proto.SigninRequest, opts ...grpc.CallOption) (*proto.SigninResponse, error)
+	Signup(ctx context.Context, in *proto.SignupRequest, opts ...grpc.CallOption) (*proto.SignupResponse, error)
 	Signin(ctx context.Context, in *proto.SigninRequest, opts ...grpc.CallOption) (*proto.SigninResponse, error)
 	CreateItem(ctx context.Context, in *proto1.CreateItemRequest, opts ...grpc.CallOption) (*proto1.CreateItemResponse, error)
 	GetItem(ctx context.Context, in *proto1.GetItemRequest, opts ...grpc.CallOption) (*proto1.GetItemResponse, error)
@@ -35,8 +35,8 @@ func NewGatewayServiceClient(cc grpc.ClientConnInterface) GatewayServiceClient {
 	return &gatewayServiceClient{cc}
 }
 
-func (c *gatewayServiceClient) Signup(ctx context.Context, in *proto.SigninRequest, opts ...grpc.CallOption) (*proto.SigninResponse, error) {
-	out := new(proto.SigninResponse)
+func (c *gatewayServiceClient) Signup(ctx context.Context, in *proto.SignupRequest, opts ...grpc.CallOption) (*proto.SignupResponse, error) {
+	out := new(proto.SignupResponse)
 	err := c.cc.Invoke(ctx, "/dnakano.microservice_handson.gateway.GatewayService/Signup", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -84,7 +84,7 @@ func (c *gatewayServiceClient) ListItems(ctx context.Context, in *proto1.ListIte
 // All implementations must embed UnimplementedGatewayServiceServer
 // for forward compatibility
 type GatewayServiceServer interface {
-	Signup(context.Context, *proto.SigninRequest) (*proto.SigninResponse, error)
+	Signup(context.Context, *proto.SignupRequest) (*proto.SignupResponse, error)
 	Signin(context.Context, *proto.SigninRequest) (*proto.SigninResponse, error)
 	CreateItem(context.Context, *proto1.CreateItemRequest) (*proto1.CreateItemResponse, error)
 	GetItem(context.Context, *proto1.GetItemRequest) (*proto1.GetItemResponse, error)
@@ -96,7 +96,7 @@ type GatewayServiceServer interface {
 type UnimplementedGatewayServiceServer struct {
 }
 
-func (UnimplementedGatewayServiceServer) Signup(context.Context, *proto.SigninRequest) (*proto.SigninResponse, error) {
+func (UnimplementedGatewayServiceServer) Signup(context.Context, *proto.SignupRequest) (*proto.SignupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Signup not implemented")
 }
 func (UnimplementedGatewayServiceServer) Signin(context.Context, *proto.SigninRequest) (*proto.SigninResponse, error) {
@@ -125,7 +125,7 @@ func RegisterGatewayServiceServer(s grpc.ServiceRegistrar, srv GatewayServiceSer
 }
 
 func _GatewayService_Signup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.SigninRequest)
+	in := new(proto.SignupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -137,7 +137,7 @@ func _GatewayService_Signup_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/dnakano.microservice_handson.gateway.GatewayService/Signup",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServiceServer).Signup(ctx, req.(*proto.SigninRequest))
+		return srv.(GatewayServiceServer).Signup(ctx, req.(*proto.SignupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

@@ -8,7 +8,8 @@ import (
 
 	"github.com/110y/run"
 	"github.com/dai65527/microservice-handson/pkg/logger"
-	"github.com/dai65527/microservice-handson/services/item/grpc"
+	"github.com/dai65527/microservice-handson/services/gateway/grpc"
+	"github.com/dai65527/microservice-handson/services/gateway/http"
 )
 
 func main() {
@@ -27,23 +28,43 @@ func server(ctx context.Context) int {
 	}
 	glogger := l.WithName("gateway")
 
+	grpcPortStr := os.Getenv("GATEWAYGRPC_PORT")
+	if grpcPortStr == "" {
+		grpcPortStr = "5005"
+	}
+	grpcPort, err := strconv.Atoi(grpcPortStr)
+	if err != nil {
+		panic(fmt.Sprintf("failed to parse GATEWAYGRPC_PORT: %s", err))
+	}
+
+	httpPortStr := os.Getenv("GATEWAYHTTP_PORT")
+	if httpPortStr == "" {
+		httpPortStr = "4000"
+	}
+	httpPort, err := strconv.Atoi(httpPortStr)
+	if err != nil {
+		panic(fmt.Sprintf("failed to parse GATEWAYHTTP_PORT: %s", err))
+	}
+
 	grpcErrCh := make(chan error, 1)
 	go func() {
-		portStr := os.Getenv("GATEWAY_PORT")
-		if portStr == "" {
-			portStr = "5005"
-		}
-		port, err := strconv.Atoi(portStr)
-		if err != nil {
-			grpcErrCh <- fmt.Errorf("failed to parse GATEWAY_PORT: %s", err)
-		}
-		grpcErrCh <- grpc.RunServer(ctx, port, glogger.WithName("grpc"))
+		grpcErrCh <- grpc.RunServer(ctx, grpcPort, glogger.WithName("grpc"))
 	}()
 
 	httpErrCh := make(chan error, 1)
 	go func() {
-		httpErrCh <- http.RunServer(ctx, )
-	}
+		httpErrCh <- http.RunServer(ctx, httpPort, grpcPort)
+	}()
 
-	return 0
+	select {
+	case err := <-grpcErrCh:
+		glogger.Error(err, "failed to serve grpc server")
+		return 1
+	case err := <-httpErrCh:
+		glogger.Error(err, "failed to serve http server")
+		return 1
+	case <-ctx.Done():
+		glogger.Info("shutting down...")
+		return 0
+	}
 }
