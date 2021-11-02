@@ -11,7 +11,7 @@ import "services/catalog/proto/catalog.proto";
 service GatewayService {
   rpc Signup(authority.SignupRequest) returns (authority.SignupResponse) {
     option (google.api.http) = {
-      post: "/signup"
+      post: "/auth/signup"
       body: "*"
     };
   }

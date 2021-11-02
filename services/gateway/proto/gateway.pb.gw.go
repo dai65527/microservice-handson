@@ -13,8 +13,8 @@ import (
 	"io"
 	"net/http"
 
-	proto_3 "github.com/dai65527/microservice-handson/services/authority/proto"
-	proto_0 "github.com/dai65527/microservice-handson/services/catalog/proto"
+	proto_1 "github.com/dai65527/microservice-handson/services/authority/proto"
+	proto_2 "github.com/dai65527/microservice-handson/services/catalog/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
@@ -34,7 +34,7 @@ var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
 func request_GatewayService_Signup_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_3.SignupRequest
+	var protoReq proto_1.SignupRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -51,7 +51,7 @@ func request_GatewayService_Signup_0(ctx context.Context, marshaler runtime.Mars
 }
 
 func local_request_GatewayService_Signup_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_3.SignupRequest
+	var protoReq proto_1.SignupRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -68,7 +68,7 @@ func local_request_GatewayService_Signup_0(ctx context.Context, marshaler runtim
 }
 
 func request_GatewayService_Signin_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_3.SigninRequest
+	var protoReq proto_1.SigninRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -85,7 +85,7 @@ func request_GatewayService_Signin_0(ctx context.Context, marshaler runtime.Mars
 }
 
 func local_request_GatewayService_Signin_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_3.SigninRequest
+	var protoReq proto_1.SigninRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -102,7 +102,7 @@ func local_request_GatewayService_Signin_0(ctx context.Context, marshaler runtim
 }
 
 func request_GatewayService_CreateItem_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_0.CreateItemRequest
+	var protoReq proto_2.CreateItemRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -119,7 +119,7 @@ func request_GatewayService_CreateItem_0(ctx context.Context, marshaler runtime.
 }
 
 func local_request_GatewayService_CreateItem_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_0.CreateItemRequest
+	var protoReq proto_2.CreateItemRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -136,7 +136,7 @@ func local_request_GatewayService_CreateItem_0(ctx context.Context, marshaler ru
 }
 
 func request_GatewayService_GetItem_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_0.GetItemRequest
+	var protoReq proto_2.GetItemRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -162,7 +162,7 @@ func request_GatewayService_GetItem_0(ctx context.Context, marshaler runtime.Mar
 }
 
 func local_request_GatewayService_GetItem_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_0.GetItemRequest
+	var protoReq proto_2.GetItemRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -192,7 +192,7 @@ var (
 )
 
 func request_GatewayService_ListItems_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_0.ListItemsRequest
+	var protoReq proto_2.ListItemsRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
@@ -208,7 +208,7 @@ func request_GatewayService_ListItems_0(ctx context.Context, marshaler runtime.M
 }
 
 func local_request_GatewayService_ListItems_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq proto_0.ListItemsRequest
+	var protoReq proto_2.ListItemsRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
@@ -235,7 +235,7 @@ func RegisterGatewayServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/dnakano.microservice_handson.gateway.GatewayService/Signup", runtime.WithHTTPPathPattern("/signup"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/dnakano.microservice_handson.gateway.GatewayService/Signup", runtime.WithHTTPPathPattern("/auth/signup"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -389,7 +389,7 @@ func RegisterGatewayServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/dnakano.microservice_handson.gateway.GatewayService/Signup", runtime.WithHTTPPathPattern("/signup"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/dnakano.microservice_handson.gateway.GatewayService/Signup", runtime.WithHTTPPathPattern("/auth/signup"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -489,7 +489,7 @@ func RegisterGatewayServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 }
 
 var (
-	pattern_GatewayService_Signup_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"signup"}, ""))
+	pattern_GatewayService_Signup_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"auth", "signup"}, ""))
 
 	pattern_GatewayService_Signin_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"auth", "signin"}, ""))
 

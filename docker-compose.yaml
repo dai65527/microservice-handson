@@ -6,12 +6,12 @@ services:
   #   command: ["tail", "-f", "/dev/null"]
   db:
     container_name: handson-db-service
-    build: 
+    build:
       context: .
       dockerfile: ./platform/db/Dockerfile
   item:
     container_name: handson-item-service
-    environment: 
+    environment:
       DB_HOST: handson-db-service
       DB_PORT: 5000
       LISTEN_PORT: 5001
@@ -22,7 +22,7 @@ services:
       - "5001:5001"
   customer:
     container_name: handson-customer-service
-    environment: 
+    environment:
       DB_HOST: handson-db-service
       DB_PORT: 5000
       LISTEN_PORT: 5002
@@ -33,7 +33,7 @@ services:
       - "5002:5002"
   authority:
     container_name: handson-authority-service
-    environment: 
+    environment:
       CUSTOMER_HOST: handson-customer-service
       CUSTOMER_PORT: 5002
       LISTEN_PORT: 5003
@@ -44,7 +44,7 @@ services:
       - "5003:5003"
   catalog:
     container_name: handson-catalog-service
-    environment: 
+    environment:
       CUSTOMER_HOST: handson-customer-service
       CUSTOMER_PORT: 5002
       ITEM_HOST: handson-item-service
@@ -55,3 +55,18 @@ services:
       dockerfile: ./services/catalog/Dockerfile
     ports:
       - "5004:5004"
+  gateway:
+    container_name: handson-gateway-service
+    environment:
+      AUTHORITY_HOST: handson-authority-service
+      AUTHORITY_PORT: 5003
+      CUSTOMER_HOST: handson-customer-service
+      CUSTOMER_PORT: 5002
+      LISTEN_PORT: 5005
+      GATEWAYHTTP_PORT: 4000
+    build:
+      context: .
+      dockerfile: ./services/gateway/Dockerfile
+    ports:
+      - "5005:5005"
+      - "4000:4000"
