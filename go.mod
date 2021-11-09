@@ -9,7 +9,8 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.6.0
-	github.com/lestrrat-go/jwx v1.2.6
+	github.com/lestrrat-go/codegen v1.0.2 // indirect
+	github.com/lestrrat-go/jwx v1.2.9
 	github.com/stretchr/testify v1.7.0
 	go.uber.org/zap v1.18.1
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c
