@@ -322,6 +322,14 @@ $ export TOKEN=eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhN2M2Mjg3LWM0NWQtNDk2Ni04NGI0LWExN
 $ curl -s -XGET -H "authorization: bearer $TOKEN" localhost:4000/catalog/items | jq .
 ```
 
+まとめた。
+
+```sh
+$ curl -s -XPOST -d '{"name":"gopher"}' localhost:4000/auth/signup | jq . &&\
+TOKEN=$(curl -s -XPOST -d '{"name":"gopher"}' localhost:4000/auth/signin | jq .access_token -r) &&\
+curl -s -XGET -H "authorization: bearer $TOKEN" localhost:4000/catalog/items | jq .
+```
+
 ## 21.11.3 Gateway からの認証がうまくいかない
 
 ```sh
@@ -392,3 +400,6 @@ Stopping handson-catalog-service   ... done
 Stopping handson-customer-service  ... done
 Stopping handson-db-service        ... done
 ```
+
+↑ fixed on https://github.com/dai65527/microservice-handson/pull/1 ありがとう！
+前のバージョンでは k.Alogorithhm()が空でも OK だったっぽい。

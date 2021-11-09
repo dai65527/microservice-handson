@@ -60,9 +60,9 @@ services:
     environment:
       AUTHORITY_HOST: handson-authority-service
       AUTHORITY_PORT: 5003
-      CUSTOMER_HOST: handson-customer-service
-      CUSTOMER_PORT: 5002
-      LISTEN_PORT: 5005
+      CATALOG_HOST: handson-catalog-service
+      CATALOG_PORT: 5004
+      GATEWAYGRPC_PORT: 5005
       GATEWAYHTTP_PORT: 4000
     build:
       context: .

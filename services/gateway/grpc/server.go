@@ -66,24 +66,18 @@ func (s *server) AuthFuncOverride(ctx context.Context, fullMethodName string) (c
 		s.log(ctx).Info("failed to get token from authorization header")
 		return nil, status.Error(codes.Unauthenticated, "unauthenticated")
 	}
-	fmt.Printf("token: %v\n", token)
 
 	res, err := s.authorityClient.ListPublicKeys(ctx, &authority.ListPublicKeysRequest{})
 	if err != nil {
 		s.log(ctx).Error(err, "failed to call authority's ListPublicKeys")
 		return nil, status.Error(codes.Internal, "failed to authenticate")
 	}
-	fmt.Printf("res.Jwks: %v\n", res.Jwks)
 
-	// key, err := jwk.Parse([]byte(res.Jwks))
 	key, err := jwk.Parse(bytes.NewBufferString(res.Jwks).Bytes())
 	if err != nil {
 		s.log(ctx).Error(err, "failed to parse jwks")
 		return nil, status.Error(codes.Internal, "failed to authenticate")
 	}
-	fmt.Printf("key.Len(): %v\n", key.Len())
-	k, _ := key.Get(0)
-	fmt.Printf("k.Algorithm(): %v\n", k.Algorithm())
 
 	_, err = jwt.Parse([]byte(token), jwt.WithKeySet(key))
 	if err != nil {

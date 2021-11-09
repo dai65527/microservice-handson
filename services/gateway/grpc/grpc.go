@@ -35,12 +35,12 @@ func RunServer(ctx context.Context, port int, logger logr.Logger) error {
 		return fmt.Errorf("failed to dial authority grpc server: %w", err)
 	}
 
-	chost := os.Getenv("CUSTOMER_HOST")
+	chost := os.Getenv("CATALOG_HOST")
 	if chost == "" {
 		chost = "localhost"
 	}
 
-	cport := os.Getenv("CUSTOMER_PORT")
+	cport := os.Getenv("CATALOG_PORT")
 	if aport == "" {
 		aport = "5004"
 	}
