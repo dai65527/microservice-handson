@@ -82,6 +82,8 @@ func (s *server) AuthFuncOverride(ctx context.Context, fullMethodName string) (c
 		return nil, status.Error(codes.Internal, "failed to authenticate")
 	}
 	fmt.Printf("key.Len(): %v\n", key.Len())
+	k, _ := key.Get(0)
+	fmt.Printf("k.Algorithm(): %v\n", k.Algorithm())
 
 	_, err = jwt.Parse([]byte(token), jwt.WithKeySet(key))
 	if err != nil {
