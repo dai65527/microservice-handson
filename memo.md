@@ -318,6 +318,10 @@ $ curl -s -XPOST -d '{"name":"gopher"}' localhost:4000/auth/signin | jq .
 $ export TOKEN=eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhN2M2Mjg3LWM0NWQtNDk2Ni04NGI0LWExNjMzZTRlM2E2NCIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRob3JpdHkiLCJzdWIiOiI0NmNhZmJhYy1mYjlkLTRiZGYtYmRiNC1kNzAxMGRjODI4MDMifQ.GKqJXCgsTr_yqrVcxg6zBDRXtZYuxxvRO8dV3GbgljVzO2JnQuhg2jwThCFsuY0m5RlU0DKS5X9VI7ZTL8mOlowUaoypgschJMj3juX2JiP9Daj-6w6k__zCAdaJ4eiw8QdoljYhrfRi8Q4jei2JFqTODqpC8cgmjvTACDdl-MQ4_v6Qrf925ZlW6LFuY6QIzhfmlg9a6486RjpxDBCv-BaR3k8IHl5GcE-3ACTDVq_N25ePH7zha917FROQnflTy9Ozy-_V37khiiPtu6TdkC7bf2mA4VMefR_crh5NNG90Ch2IQ1NhYKMg1l400n_7U1aiSjnImv4TqtvJ5s0Www
 ```
 
+```sh
+$ curl -s -XGET -H "authorization: bearer $TOKEN" localhost:4000/catalog/items | jq .
+```
+
 ## 21.11.3 Gateway からの認証がうまくいかない
 
 ```sh
