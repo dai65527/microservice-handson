@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"strconv"
 
 	"github.com/dai65527/microservice-handson/pkg/logger"
 	"github.com/dai65527/microservice-handson/platform/db/grpc"
@@ -30,9 +31,18 @@ func run(ctx context.Context) int {
 	}
 	clogger := l.WithName("db")
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "5000"
+	}
+	portInt, err := strconv.Atoi(port)
+	if err != nil {
+		panic(fmt.Sprintf("failed to parse port: %s", err))
+	}
+
 	errCh := make(chan error, 1)
 	go func() {
-		errCh <- grpc.RunServer(ctx, 5000, clogger.WithName("grpc"))
+		errCh <- grpc.RunServer(ctx, portInt, clogger.WithName("grpc"))
 	}()
 
 	select {
