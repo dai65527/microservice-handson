@@ -403,3 +403,61 @@ Stopping handson-db-service        ... done
 
 ↑ fixed on https://github.com/dai65527/microservice-handson/pull/1 ありがとう！
 前のバージョンでは k.Alogorithhm()が空でも OK だったっぽい。
+
+## kubernetes
+
+### kind
+
+#### kind とは
+
+> kind is a tool for running local Kubernetes clusters using Docker container "nodes".
+
+- Cluster: Kubernetes クラスターは、 コンテナ化されたアプリケーションを実行する、ノードと呼ばれるワーカーマシンの集合
+- Node: 1 つの VM または物理的なマシン
+  - ワーカーノード: アプリケーションワークロードのコンポーネントである Pod をホスト
+  - ワーカーノード: アプリケーションワークロードのコンポーネントである Pod をホスト
+
+参考
+
+- https://kind.sigs.k8s.io/
+- https://kubernetes.io/ja/docs/concepts/overview/components/
+- https://thinkit.co.jp/article/17453
+
+#### クラスタ立ち上げ
+
+```
+kind create cluster
+```
+
+hello-world
+
+```sh
+$ kubectl run hello-world --image=hello-world  --restart=Never
+pod/hello-world created
+$ kubectl get pod
+NAME          READY   STATUS              RESTARTS   AGE
+hello-world   0/1     ContainerCreating   0          4s
+$ kubectl get pod
+NAME          READY   STATUS    RESTARTS   AGE
+hello-world   1/1     Running   0          11s
+$ kubectl get pod
+NAME          READY   STATUS      RESTARTS   AGE
+hello-world   0/1     Completed   0          12s
+$ kubectl logs hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...
+$ kubectl delete pod hello-world
+pod "hello-world" deleted
+```
+
+### kubectl
+
+### マニフェスト
+
+#### CPU の単位
+
+> 小数値も利用可能です。0.5 CPU を要求するコンテナには、1 CPU を要求するコンテナの半分の CPU が与えられます。m というミリを表す接尾辞も使用できます。たとえば、100m CPU、100 milliCPU、0.1 CPU はすべて同じです。1m 以上の精度は指定できません。
+
+https://kubernetes.io/ja/docs/tasks/configure-pod-container/assign-cpu-resource/#cpu%E3%81%AE%E5%8D%98%E4%BD%8D
