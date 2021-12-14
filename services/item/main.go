@@ -32,11 +32,10 @@ func run(ctx context.Context) int {
 
 	port, err := strconv.Atoi(os.Getenv("LISTEN_PORT"))
 	if err != nil {
-		port = 5002
+		port = 5000
 	}
 	errCh := make(chan error, 1)
 	go func() {
-		// errCh <- grpc.RunServer(ctx, 5000, clogger.WithName("grpc"))
 		errCh <- grpc.RunServer(ctx, port, clogger.WithName("grpc"))
 	}()
 
