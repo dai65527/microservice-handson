@@ -33,7 +33,7 @@ func run(ctx context.Context) int {
 
 	port, err := strconv.Atoi(os.Getenv("LISTEN_PORT"))
 	if err != nil {
-		port = 5004
+		port = 5000
 	}
 	errCh := make(chan error, 1)
 	go func() {

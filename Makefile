@@ -1,5 +1,8 @@
 KUBECTL_CMD := kubectl
 
+.PHONY: all
+all: db item catalog customer
+
 .PHONY: db
 db:
 	# kubectl delete deploy -n db --ignore-not-found app
@@ -16,7 +19,14 @@ item:
 
 .PHONY: customer
 customer:
-	# kubectl delete deploy -n item --ignore-not-found app
+	# kubectl delete deploy -n customer --ignore-not-found app
 	docker build -t dnakano/microservice-handson/customer:latest --file ./services/customer/Dockerfile .
 	kind load docker-image dnakano/microservice-handson/customer:latest --name kind
 	kubectl apply -f ./services/customer/deployment.yaml
+
+.PHONY: 
+catalog:
+	# kubectl delete deploy -n catalog --ignore-not-found app
+	docker build -t dnakano/microservice-handson/catalog:latest --file ./services/catalog/Dockerfile .
+	kind load docker-image dnakano/microservice-handson/catalog:latest --name kind
+	kubectl apply -f ./services/catalog/deployment.yaml
